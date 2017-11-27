@@ -1,0 +1,1 @@
+<h1>Custom errors page</h1>
