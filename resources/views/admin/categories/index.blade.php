@@ -39,7 +39,7 @@
 			
 			<tr>
 				<th>{{ $category->id }}</th>
-				<th>{{ $category->name }}</th>
+				<th><a href="{{ route('categories.edit', $category->id) }}">{{ $category->name }}</a></th>
 				<th>{{ $category->created_at? $category->created_at->diffForHumans() :'no date' }}</th>
 			</tr>
 			@endforeach
