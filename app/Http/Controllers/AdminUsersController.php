@@ -48,15 +48,15 @@ class AdminUsersController extends Controller
         //
 
 
-        if(trim($request->password)==''){
-            $input = $request->except('password');
-        }else{
+        // if(trim($request->password)==''){
+        //     $input = $request->except('password');
+        // }else{
 
-            $input = $request->all();
-            $input['password'] = bcrypt($request->password);
-        }
-
-
+            
+        // }
+        $input = $request->all();
+        $input['password'] = bcrypt($request->password);
+        
         //$input = $request->all();
 
         if($file = $request->file('photo_id')){
@@ -161,7 +161,10 @@ class AdminUsersController extends Controller
         //User::findOrFail($id)->delete();
         $user = User::findOrFail($id);
 
-        unlink(public_path().$user->photo->file);
+        if($user->photo){
+            unlink(public_path().$post->photo->file);
+        }
+
 
 
 
