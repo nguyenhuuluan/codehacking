@@ -5,7 +5,9 @@
 @section('content')
 
 
-	<h1>Posts</h1>
+<h1>Posts</h1>
+<div class="table-responsive">
+
 
 	<table class="table">
 		<thead>
@@ -16,13 +18,14 @@
 				<th>Photo</th>
 				<th>Title</th>
 				<th>Body</th>
+				<th>Action</th>
 				<th>Created</th>
 				<th>Updated</th>
 			</tr>
 		</thead>
 
 		<tbody>
-		@if($posts)
+			@if($posts)
 			@foreach ($posts as $post)
 			<tr>
 				<td>{{ $post->id }}</td>
@@ -37,17 +40,20 @@
 
 
 				<td>{{ $post->title }}</td>
-				<td>{{ str_limit($post->body, 7)  }}</td>
-				<td>{{ $post->created_at->diffForhumans() }}</td>
-				<td>{{ $post->updated_at->diffForhumans() }}</td>
-			</tr>
+				<td>{{ str_limit($post->body, 10)  }}</td>
+				<td><a href="{{ route('home.post', $post->id) }}" class="btn btn-success">View Post</a>
+					<a href="{{ route('comments.show', $post->id) }}" class="btn btn-info">View Comments</a></td>
+					<td>{{ $post->created_at->diffForhumans() }}</td>
+					<td>{{ $post->updated_at->diffForhumans() }}</td>
+				</tr>
 
-			@endforeach
-	
+				@endforeach
 
-			@endif
-		</tbody>
-	
-	</table>
 
-@endsection
+				@endif
+			</tbody>
+
+		</table>
+	</div>
+
+	@endsection
