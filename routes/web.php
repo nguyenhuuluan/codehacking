@@ -15,11 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Auth::routes();
 
-
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
+
+
 	
 
 
@@ -42,8 +47,8 @@ Route::middleware(['admin', 'web', 'auth'])->group(function () {
 	//Route::get('admin/media/upload', ['as'=>'media.upload', 'uses'=>'AdminMediasController@store']);
 
 
-	Route::resource('admin/comments', 'PostCommentsController');
-	Route::resource('admin/comments/replies', 'CommentRepliesController');
+	Route::resource('admin/comments', 'PostCommentController');
+	Route::resource('admin/comment/replies', 'CommentRepliesController');
 	
     Route::get('/admin', function(){
 	return view('admin.index');
