@@ -41,7 +41,7 @@ class PostCommentController extends Controller
         //
 
 
-        //$user = Auth::user();
+        $user = Auth::user();
         
         $data =[
             'post_id'=> $request->post_id,

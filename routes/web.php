@@ -47,15 +47,23 @@ Route::middleware(['admin', 'web', 'auth'])->group(function () {
 	//Route::get('admin/media/upload', ['as'=>'media.upload', 'uses'=>'AdminMediasController@store']);
 
 
-	Route::resource('admin/comments', 'PostCommentController');
-	Route::resource('admin/comment/replies', 'CommentRepliesController');
+	// Route::resource('admin/comments', 'PostCommentController');
+	// Route::resource('admin/comment/replies', 'CommentRepliesController');
 	
     Route::get('/admin', function(){
 	return view('admin.index');
-});
-
 
 });
+    });
+Route::middleware(['web', 'auth'])->group(function () {
+  
+
+	Route::resource('admin/comments', 'PostCommentController');
+	Route::resource('admin/comment/replies', 'CommentRepliesController');
+	
+
+});
+
 
 
 
