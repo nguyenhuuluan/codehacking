@@ -8,6 +8,7 @@ use Auth;
 use Hash;
 use App\Photo;
 use App\Category;
+use App\Comment;
 use App\Http\Requests\PostsCreateRequest;
 
 class AdminPostsController extends Controller
@@ -152,9 +153,10 @@ class AdminPostsController extends Controller
     public function post($id){
 
         $post = Post::findOrFail($id);
+        $comments = $post->comments()->whereIsActive(1)->get();
 
         //return $post;
 
-        return view('post', compact('post'));
+        return view('post', compact('post','comments'));
     }
 }

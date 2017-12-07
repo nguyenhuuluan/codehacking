@@ -17,7 +17,8 @@
 		</tr>
 	</thead>
 	<tbody>
-
+	@foreach ($comments as $comment)
+		{{-- expr --}}
 		<tr>
 			<td>{{ $comment->id }}</td>
 			<td>{{ $comment->author }}</td>
@@ -63,15 +64,17 @@
 
 			</td>
 		</tr>
+	@endforeach
+		
 
 	</tbody>
 </table>
 
-@endif
+
 @else
  <h1 class="text-center">No Comments</h1>
 
-
+@endif
 
 
 
