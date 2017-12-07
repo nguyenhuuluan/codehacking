@@ -17,7 +17,7 @@
 		</tr>
 	</thead>
 	<tbody>
-	@foreach ($comments as $comment)
+		@foreach ($comments as $comment)
 		{{-- expr --}}
 		<tr>
 			<td>{{ $comment->id }}</td>
@@ -25,6 +25,7 @@
 			<td>{{ $comment->email }}</td>
 			<td>{{ $comment->body }}</td>
 			<td><a href="{{ route('home.post', $comment->post->id) }}">View Post</a></td>
+			<td><a href="{{ route('replies.show', $comment->id) }}">View Reply</a></td>
 			<td>
 				@if ($comment->is_active == 1)
 				{!! Form::open(['method'=>'PATCH', 'action'=>['PostCommentController@update', $comment->id]]) !!}
@@ -64,7 +65,7 @@
 
 			</td>
 		</tr>
-	@endforeach
+		@endforeach
 		
 
 	</tbody>
@@ -72,7 +73,7 @@
 
 
 @else
- <h1 class="text-center">No Comments</h1>
+<h1 class="text-center">No Comments</h1>
 
 @endif
 

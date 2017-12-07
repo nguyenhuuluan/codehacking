@@ -8355,6 +8355,10 @@ button.close {
 }
 
 #nested-comment {
-  margin-top: 60xp;
+  margin-top: 30px;
+}
+
+.comment-reply {
+  display: none;
 }
 

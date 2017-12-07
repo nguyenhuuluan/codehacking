@@ -90,6 +90,9 @@
 		@foreach ($comment->replies as $reply)
 
 
+		@if($reply->is_active)
+
+
 
 		<!-- Nested Comment -->
 		<div class="media" id="nested-comment">
@@ -99,7 +102,7 @@
 			<div class="media-body">
 				<h4 class="media-heading">{{ $reply->author }}
 					<small>{{ $reply->created_at->diffForHumans() }}</small>
-				</h4>
+				</h4>	
 				{{ $reply->body }}
 			</div>
 
@@ -111,7 +114,7 @@
 				</button>
 
 
-				<div class="comment-reply" style="display:none;">
+				<div class="comment-reply col-sm-6">
 					{!! Form::open(['method'=>'POST', 'action'=>'CommentRepliesController@createReply']) !!}
 					<input type="hidden" name="comment_id" value="{{ $comment->id }}">
 					<div class="form-group">
@@ -126,7 +129,13 @@
 				
 			</div>
 		</div>
+
+		@else
+			<h1 class="text-center">No replies</h1>
+
+		@endif
 		@endforeach
+
 		@endif
 	</div>
 
