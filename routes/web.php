@@ -64,7 +64,10 @@ Route::middleware(['web', 'auth'])->group(function () {
 
 });
 
+Route::middleware(['auth'])->group(function(){
 
+	Route::post('comment/reply', 'CommentRepliesController@createReply');
+});
 
 
 
