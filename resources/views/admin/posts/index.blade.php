@@ -41,7 +41,7 @@
 
 				<td>{{ $post->title }}</td>
 				<td>{{ str_limit($post->body, 10)  }}</td>
-				<td><a href="{{ route('home.post', $post->id) }}" class="btn btn-success">View Post</a>
+				<td><a href="{{ route('home.post', $post->slug) }}" class="btn btn-success">View Post</a>
 					<a href="{{ route('comments.show', $post->id) }}" class="btn btn-info">View Comments</a></td>
 					<td>{{ $post->created_at->diffForhumans() }}</td>
 					<td>{{ $post->updated_at->diffForhumans() }}</td>
