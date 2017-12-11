@@ -53,6 +53,10 @@ class Post extends Model
     }
 
 
+    public function photoPlaceholder(){
+        return "http://placehold.it/700x200";
+    }
+
 
 
 }
