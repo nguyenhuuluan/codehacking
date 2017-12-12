@@ -17,7 +17,7 @@
 		<img src="{{ $post->photo ? $post->photo->file : $post->photoPlaceholder()}}" alt="" class="img-responsive">
 	</div>
 	
-	<div class="col-sm-6">
+	<div class="col-sm-9">
 
 
 
